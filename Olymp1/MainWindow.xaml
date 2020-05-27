@@ -1,0 +1,57 @@
+﻿<Window x:Class="Olymp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Olymp1"
+        mc:Ignorable="d"
+        Title="Олимп" Height="550" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.20*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Column="0"  BorderBrush="Black" BorderThickness="1">
+            
+                <TextBlock Text="OLYMP" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="24"/>
+          
+        </Border>
+        <Border Grid.Row="1"  BorderBrush="Black" BorderThickness="1">
+            <StackPanel    Orientation="Vertical">
+                <Button Margin="5" Height="25" Content="Главная" Command="{Binding MainCmd}"/>
+                <Button Margin="5" Height="43" Command="{Binding GroupClasseJournalCmd}">
+                    <TextBlock Text="Расписание групповых занятий"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"/>
+                </Button>
+                <Button Margin="5" Height="25" Content="Журнал посещений" Command="{Binding VisitCmd}"/>
+                <Border  Margin="5" BorderBrush="Black" BorderThickness="1"/>
+
+                <Button Margin="5" Height="25" Content="Клубные карты" Command="{Binding CardCmd}"></Button>
+                <Button Margin="5" Height="25" Content="Сотрудники" Command="{Binding EmployeeCmd}"></Button>
+                <Button Margin="5" Height="25" Content="Клиенты" Command="{Binding CustomerCmd}"></Button>
+                <Button Margin="5" Height="43" Command="{Binding GroupClasseCmd}">
+                    <TextBlock Text="Программы групповых занятий"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"/>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1"  BorderBrush="Black" BorderThickness="1">
+
+                <TextBlock Text="Информационная система автоматизации администрирования спортзала"  VerticalAlignment="Top" HorizontalAlignment="Center"  FontSize="22"/>
+
+        </Border>
+
+        <Frame Grid.Column="1" Grid.Row="1"
+               Content="{Binding CurrentPage}"
+               NavigationUIVisibility="Hidden"
+               Opacity="{Binding FrameOpacity}" />
+
+    </Grid>
+</Window>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="Olymp1.View.EditForms.CardEditForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Olymp1.View.EditForms"
+        mc:Ignorable="d"
+        Title="Добавление/Редактирование карты" Height="240" Width="430">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.65*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Left" Margin="5">
+            <TextBlock  Margin="5" Text="Наименование" FontSize="16" Height="25" VerticalAlignment="Center"/>
+            <TextBlock  Margin="5" Text="Владелец" Height="25" FontSize="16"/>
+            <TextBlock  Margin="5" Text="Действительна до" Height="25" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left"  Margin="5">
+            <TextBox Height="25" Width="230"  Margin="5" Text="{Binding SelectedCard.Name}" VerticalContentAlignment="Center"/>
+            <TextBox Height="25" Width="230"  Margin="5" Text="{Binding SelectedCard.Customer.FIO}" IsEnabled="False" VerticalContentAlignment="Center"/>
+            <DatePicker Height="25" Width="230" Margin="5" SelectedDate="{Binding SelectedCard.DeactivationDate}"></DatePicker>
+            <TextBlock  Margin="5" Text="{Binding Path=Msg}" HorizontalAlignment="Center" Height="25" FontSize="16" Foreground="Red"/>
+            <Button Height="25" Margin="5" Content="Сохранить" Command="{Binding SaveCard}"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

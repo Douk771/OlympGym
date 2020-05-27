@@ -1,0 +1,48 @@
+﻿<Window x:Class="Olymp1.View.EditForms.GroupClassesJournalEditForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Olymp1.View.EditForms"
+        mc:Ignorable="d"
+        Title="Добавление/Редактирование группового занятия " Height="250" Width="680">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.85*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Left" Margin="5">
+            <TextBlock  Margin="5" Text="Наименование группового занятия" FontSize="16" Height="25" VerticalAlignment="Center"/>
+            <TextBlock  Margin="5" Text="Тренер" Height="25" FontSize="16"/>
+            <TextBlock  Margin="5" Text="Дата и время проведения" Height="25" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left"  Margin="5">
+            <ComboBox Height="25" Margin="5" ItemsSource="{Binding GroupClasses}"
+                     DisplayMemberPath="GroupClasseName"
+                     SelectedItem="{Binding SelectedGroupClassesJournal.GroupClasse}"
+                      SelectedValuePath="GroupClasseId"
+                    SelectedValue="{Binding SelectedGroupClassesJournal.GroupClasseId}"
+                      />
+            <ComboBox Height="25" Margin="5" ItemsSource="{Binding Employees}"
+                     DisplayMemberPath="FIO"
+                     SelectedItem="{Binding SelectedGroupClassesJournal.Employee}"
+                      SelectedValuePath="EmployeeId"
+                    SelectedValue="{Binding SelectedGroupClassesJournal.EmployeeId}"
+                      />
+
+            <StackPanel Orientation="Horizontal">
+                <DatePicker Height="25" Width="230" Margin="5" SelectedDate="{Binding SelectedClassesTime}"></DatePicker>
+                <TextBox Margin="5" Height="25" Width="20" Text="{Binding StringFormat='{}{0:00}', Path=HH}" MaxLength="2" VerticalAlignment="Center"
+                        
+                         PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
+                <TextBlock  Margin="5" Text=":" HorizontalAlignment="Center" Height="25" FontSize="16" />
+                <TextBox Margin="5" Height="25" Width="20" Text="{Binding StringFormat='{}{0:00}', Path=MM}" MaxLength="2" VerticalAlignment="Center"
+                         PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
+            </StackPanel>
+            <TextBlock  Margin="5" Text="{Binding Path=Msg}" HorizontalAlignment="Center" Height="25" FontSize="16" Foreground="Red"/>
+            <Button Height="25" Margin="5" Content="Сохранить" Command="{Binding SaveClassJournal}"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
